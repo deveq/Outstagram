@@ -2,7 +2,9 @@ package com.soldemom.outstagram
 
 import android.app.Application
 import android.content.Context
+import com.facebook.stetho.Stetho
 import com.facebook.stetho.okhttp3.StethoInterceptor
+import com.soldemom.outstagram.retrofit.RetrofitService
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -22,7 +24,12 @@ class MasterApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
+        //Stetho를 초기화를 먼저 해야함.
+        Stetho.initializeWithDefaults(this)
+
         createRetrofit()
+        //chrome://inspect/#devices
+
 
 
         //stetho, glide, retrofit, gson,
@@ -74,6 +81,8 @@ class MasterApplication : Application() {
         val sp = getSharedPreferences("login_sp", Context.MODE_PRIVATE)
         return sp.getString("login_sp","null")
     }
+
+
 
 
 
