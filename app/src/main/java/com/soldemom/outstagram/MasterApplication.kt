@@ -1,7 +1,10 @@
 package com.soldemom.outstagram
 
+import android.R
 import android.app.Application
 import android.content.Context
+import android.os.Environment
+import android.util.Log
 import com.facebook.stetho.Stetho
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.soldemom.outstagram.retrofit.RetrofitService
@@ -29,6 +32,8 @@ class MasterApplication : Application() {
 
         createRetrofit()
         //chrome://inspect/#devices
+        
+        Log.d("pathh","${Environment.isExternalStorageLegacy()} 여깁니당")
 
 
 
@@ -47,7 +52,7 @@ class MasterApplication : Application() {
             if (checkIsLogin()) {
                 //로그인이 되어있다면
                 token?.let {
-                    requestBuilder.header("Authorization",token) //original에 header를 달아줌
+                    requestBuilder.header("Authorization","token $token") //original에 header를 달아줌
                 }
             }   //로그인이 되어있지 않다면 header를 달지 않고 바로 넘어감
             request = requestBuilder.build()

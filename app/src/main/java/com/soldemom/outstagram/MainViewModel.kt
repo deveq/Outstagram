@@ -9,5 +9,7 @@ class MainViewModel : ViewModel() {
 //    lateinit var postList: ArrayList<Post>
 //    lateinit var post : LiveData<ArrayList<Post>>
     var postList : ArrayList<Post> = arrayListOf<Post>()
+    var filePath: String? = null
+    var uploadContent: String? = null
 
 }

@@ -13,4 +13,5 @@ class FragmentAdapter(fa: FragmentActivity, val list: List<Fragment>) : Fragment
     override fun createFragment(position: Int): Fragment {
         return list[position]
     }
+
 }

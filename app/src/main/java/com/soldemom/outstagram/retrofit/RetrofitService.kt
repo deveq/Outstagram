@@ -1,5 +1,7 @@
 package com.soldemom.outstagram.retrofit
 
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -41,6 +43,17 @@ interface RetrofitService {
 
     @GET("instagram/post/list/all/")
     fun getAllPosts() : Call<ArrayList<Post>>
+
+    @Multipart //파트가 여러개라는거
+    @POST("instagram/post/")
+    fun uploadPost(
+        @Part Image: MultipartBody.Part,
+        @Part ("Content") requestBody : RequestBody
+    ) : Call<Post>
+
+    //내 포스팅만 보기
+    @GET("post/list/")
+    fun getUserPostList(): Call<ArrayList<Post>>
 
 
 }

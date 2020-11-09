@@ -21,8 +21,8 @@ android {
 
     defaultConfig {
         applicationId "com.soldemom.outstagram"
-        minSdkVersion 16
-        targetSdkVersion 29
+        minSdkVersion 24
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
 
@@ -52,14 +52,22 @@ dependencies {
 
 
     //Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-
+//    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     //GSON
-    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+//    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
 
     //stetho
-    implementation 'com.facebook.stetho:stetho:1.5.1'
-    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
+//    implementation 'com.facebook.stetho:stetho:1.5.1'
+//    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
+
+
+    implementation 'com.facebook.stetho:stetho:1.5.0'
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'
+    implementation 'com.facebook.stetho:stetho-js-rhino:1.5.0'
 
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'
@@ -67,5 +75,11 @@ dependencies {
 
     //ViewModel fragment-ktx
     implementation "androidx.fragment:fragment-ktx:1.2.5"
+
+
+    ////
+
+
+
 
 }
