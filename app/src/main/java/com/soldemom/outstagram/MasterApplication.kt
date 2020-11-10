@@ -14,8 +14,6 @@ import okhttp3.Request
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
-
 class MasterApplication : Application() {
 
     lateinit var service: RetrofitService
@@ -32,11 +30,6 @@ class MasterApplication : Application() {
 
         createRetrofit()
         //chrome://inspect/#devices
-        
-        Log.d("pathh","${Environment.isExternalStorageLegacy()} 여깁니당")
-
-
-
         //stetho, glide, retrofit, gson,
 
     }
@@ -86,10 +79,5 @@ class MasterApplication : Application() {
         val sp = getSharedPreferences("login_sp", Context.MODE_PRIVATE)
         return sp.getString("login_sp","null")
     }
-
-
-
-
-
 
 }

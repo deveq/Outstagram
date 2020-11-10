@@ -50,15 +50,8 @@ class UploadFragment(val viewModel: MainViewModel) : Fragment() {
 
             filePath?.let {
                 uploadPost(it)
-
-
             }
-
-
-
         }
-
-
 
         return view
     }
@@ -87,15 +80,9 @@ class UploadFragment(val viewModel: MainViewModel) : Fragment() {
         //이미지는 큰 용량때문에 파트를 나눠서 보내므로 multiPart로 보냄.
 
         val content = RequestBody.create(MediaType.parse("text/plain"), uploadContent)
-        //
-
-        Log.d("pathh","${file.exists()}, ${file.name}, ${file.path}")
 
         masterApplication.service.uploadPost(part, content).enqueue(object: Callback<Post> {
             override fun onResponse(call: Call<Post>, response: Response<Post>) {
-
-                Log.d("pathh","여긴 들어왔나용?")
-
 
                 if (response.isSuccessful) {
 
@@ -105,26 +92,12 @@ class UploadFragment(val viewModel: MainViewModel) : Fragment() {
                     val intent = Intent(context,OutstagramPostListActivity::class.java)
                     Toast.makeText(context,"업로드 성공",Toast.LENGTH_SHORT).show()
                     startActivity(intent)
-
-
-                    //내가 포스트한 목록으로 가기.
-                    //.... 어떻게 가요...?
-
-
-
                 }
             }
 
-
-
-
             override fun onFailure(call: Call<Post>, t: Throwable) {
-
-                Log.d("pathh","그럼 실패인가용?")
+                Log.d("Error","UploadFragment의 uploadPost 실패")
             }
         })
-
-
     }
-
 }

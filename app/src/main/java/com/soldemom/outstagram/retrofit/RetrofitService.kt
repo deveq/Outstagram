@@ -7,19 +7,6 @@ import retrofit2.http.*
 
 interface RetrofitService {
 
-    @GET("json/students/")
-    fun getStudentList(): Call<ArrayList<PersonFromServer>>
-
-    @POST("json/students/")
-    fun createStudents(
-        @Body params: HashMap<String,Any>
-    ) : Call<PersonFromServer>
-
-    @POST("json/students/")
-    fun createStudentEasy(
-        @Body person: PersonFromServer
-    ) : Call<PersonFromServer>
-
     @POST("user/signup/")
     @FormUrlEncoded
     fun register(
@@ -52,7 +39,7 @@ interface RetrofitService {
     ) : Call<Post>
 
     //내 포스팅만 보기
-    @GET("post/list/")
+    @GET("instagram/post/list/")
     fun getUserPostList(): Call<ArrayList<Post>>
 
 

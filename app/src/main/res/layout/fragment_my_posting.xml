@@ -5,16 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".fragments.MyPostingFragment">
 
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/my_posting_recycler_view"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        tools:listitem="@layout/outstagram_item_view"-->
-<!--        />-->
-
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/my_posting_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="내 포스팅"/>
+        tools:listitem="@layout/outstagram_item_view"
+        />
+
 
 </FrameLayout>

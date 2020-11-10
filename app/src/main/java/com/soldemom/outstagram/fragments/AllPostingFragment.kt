@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.soldemom.outstagram.MainViewModel
 import com.soldemom.outstagram.MasterApplication
 import com.soldemom.outstagram.R
@@ -17,9 +18,7 @@ import kotlinx.android.synthetic.main.fragment_all_posting.view.*
 class AllPostingFragment(val mainViewModel: MainViewModel) : Fragment() {
 
 
-    lateinit var masterApplication: MasterApplication
-    lateinit var fragmentListener: FragmentInterface
-
+    lateinit var recyclerView : RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,31 +27,19 @@ class AllPostingFragment(val mainViewModel: MainViewModel) : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_all_posting, container, false)
 
-        val postList = mainViewModel.postList
-        Log.d("으앙","${postList.size}")
+        val postList = mainViewModel.allPostList
 
-        view.all_posting_recycler_view.adapter = PostAdapter(postList)
-        view.all_posting_recycler_view.layoutManager = LinearLayoutManager(context)
+        recyclerView = view.all_posting_recycler_view.apply{
+            all_posting_recycler_view.adapter = PostAdapter(postList)
+            all_posting_recycler_view.layoutManager = LinearLayoutManager(context)
+        }
 
         return view
     }
 
+    override fun onResume() {
+        super.onResume()
+        Log.d("pathh","AllPostring")
 
-
-//
-//
-//        view.all_posting_recycler_view.apply {
-//            adapter = PostAdapter(arrayListOf<Post>())
-//            //Fragment는 Activity가 아니기 때문에 Context를 사용할 수 없으므로
-//            //this 대신 activity 객체를 사용
-//            layoutManager = LinearLayoutManager(activity)
-//        }
-//
-//
-//
-//
-//
-//    }
-
-
+    }
 }

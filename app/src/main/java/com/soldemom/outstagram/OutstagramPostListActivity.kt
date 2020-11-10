@@ -14,6 +14,7 @@ import android.view.MenuItem
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -48,20 +49,10 @@ class OutstagramPostListActivity : AppCompatActivity() {
             .load("주소")
             .into(뷰)*/
 
-//        val aa = contentResolver.openInputStream(imgUri)
-//
-//        val extension: String = imgPath.subString(imgPath.lastIndexOf("."))
-//
-//        val localImageFile = File(applicationContext.filesDir,"localImgFile${extension}")
-
-
-
         val path = getExternalFilesDir(
             Environment.DIRECTORY_PICTURES.toString() +
                 File.separator + "Output Folder")
         val file = File(getExternalFilesDir(null), "filename.jpg")
-
-
 
         masterApplication = application as MasterApplication
 
@@ -73,33 +64,52 @@ class OutstagramPostListActivity : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     val postList = response.body()
-                    mainViewModel.postList = postList ?: arrayListOf<Post>()
-                    Toast.makeText(this@OutstagramPostListActivity, "${mainViewModel.postList.size}", Toast.LENGTH_SHORT ).show()
+                    mainViewModel.allPostList = postList ?: arrayListOf<Post>()
 
                     val list = listOf<Fragment>(
                         AllPostingFragment(mainViewModel),
                         MyPostingFragment(mainViewModel),
                         UploadFragment(mainViewModel),
-                        SettingFragment()
                     )
 
                     val fragmentAdapter = FragmentAdapter(this@OutstagramPostListActivity,list)
                     view_pager.adapter = fragmentAdapter
 
                     TabLayoutMediator(tab_layout, view_pager) { tab, position ->
-                        tab.text = when (position) {
-                            1 -> "내 포스팅"
-                            2 -> "업로드"
-                            3 -> "설정"
-                            else -> "전체 포스팅"
+                        when (position) {
+                            1 -> {
+                                tab.text = "내 포스팅"
+                            }
+                            2 -> {
+                                tab.text = "업로드"
+                            }
+                            else -> {
+                                tab.text = "전체 포스팅"
+                            }
                         }
                     }.attach()
+                }
+            }
 
+            override fun onFailure(call: Call<ArrayList<Post>>, t: Throwable) {
+            }
+        })
 
+        masterApplication.service.getUserPostList().enqueue(object: Callback<ArrayList<Post>>{
+            override fun onResponse(
+                call: Call<ArrayList<Post>>,
+                response: Response<ArrayList<Post>>
+            ) {
+                if (response.isSuccessful) {
+                    val myPostList = response.body()
+                    mainViewModel.myPostList = if (myPostList != null) {
+                        myPostList
+                    } else {
+                        arrayListOf<Post>()
+                    }
                 }
 
             }
-
 
             override fun onFailure(call: Call<ArrayList<Post>>, t: Throwable) {
             }
@@ -136,17 +146,12 @@ class OutstagramPostListActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        Log.d("pathh","resultCode : $resultCode , requestCode : $requestCode ,, $RESULT_OK")
 
         if(requestCode == 1004 && resultCode == RESULT_OK) {
             //상대주소(와 비슷한) uri을 얻음
             val uri = data!!.data!!
             mainViewModel.filePath = getImageFilePath(uri)
-            Log.d("pathh","path : ${mainViewModel.filePath}")
-
             mainViewModel.uploadContent = data.getStringExtra("content")
-
-//            uploadPost(uploadFragContent)
 
         }
         //uri는 content://media/external/images/media/숫자
@@ -167,37 +172,5 @@ class OutstagramPostListActivity : AppCompatActivity() {
         return cursor.getString(columnIndex)
 
     }
-
-    //이 함수가 UploadFragment에서 실행되야하는데..
-    fun uploadPost(uploadContent: String) {
-        val file = File(mainViewModel.filePath)
-        val fileRequestBody = RequestBody.create(MediaType.parse("image/*"), file)
-        val part = MultipartBody.Part.createFormData("image",file.name, fileRequestBody)
-        //이미지는 큰 용량때문에 파트를 나눠서 보내므로 multiPart로 보냄.
-
-        val content = RequestBody.create(MediaType.parse("text/plain"), uploadContent)
-        //
-
-        masterApplication.service.uploadPost(part, content).enqueue(object: Callback<Post> {
-            override fun onResponse(call: Call<Post>, response: Response<Post>) {
-                if (response.isSuccessful) {
-
-                    //제대로 보내진거 맞는지 확인
-                    val post = response.body()
-                    Log.d("pathh","${post!!.content}")
-
-                    //내가 포스트한 목록으로 가기.
-
-
-                }
-            }
-
-            override fun onFailure(call: Call<Post>, t: Throwable) {
-            }
-        })
-
-
-    }
-
 
 }

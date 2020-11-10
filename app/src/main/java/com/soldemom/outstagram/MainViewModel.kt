@@ -8,7 +8,8 @@ import com.soldemom.outstagram.retrofit.Post
 class MainViewModel : ViewModel() {
 //    lateinit var postList: ArrayList<Post>
 //    lateinit var post : LiveData<ArrayList<Post>>
-    var postList : ArrayList<Post> = arrayListOf<Post>()
+    var allPostList : ArrayList<Post> = arrayListOf<Post>()
+    var myPostList : ArrayList<Post> = arrayListOf<Post>()
     var filePath: String? = null
     var uploadContent: String? = null
 
