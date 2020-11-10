@@ -16,9 +16,9 @@
 - 사진과 내용 업로드
 
 ## 사용한 기능
-- Retrofit
-- ViewModel
-- Stetho
+- Retrofit으로 서버의 데이터 받아오기 (REST API)
+- ViewModel로 Activity와 Fragment의 데이터 공유
+- Stetho로 서버와의 네트워크 상태 확인
 
 ## 구동 이미지
 1. 회원가입
@@ -38,6 +38,7 @@ ViewPager2와 TabLayout을 사용해서 Activity내에 Fragment를 넣음
 ![3  upload1](https://user-images.githubusercontent.com/66777885/98694468-d20bb480-23b4-11eb-870a-6613490bcf5c.gif)
 
 사진 1 업로드
+
 
 ![4  upload2](https://user-images.githubusercontent.com/66777885/98694488-da63ef80-23b4-11eb-87b8-8d0e5674ace0.gif)
 
