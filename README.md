@@ -1,5 +1,14 @@
 # Outstagram
-인스타그램 따라하기
+#### 개인프로젝트, Kotlin, Android Studio
+#### 개발기간 : 2020.11.07 ~ 2020.11.10
+
+## 애플리케이션 설명
+인스타그램의 기능을 모방한 프로젝트입니다.
+#### 참고자료
+1. https://www.fastcampus.co.kr/ 패스트캠퍼스의 안드로이드 앱 개발 과정
+2. https://darkstart.tistory.com/66 : failed : EACCES (Permission denied) 문제
+3. https://ju-hy.tistory.com/59 : Fragment에서 startActivityForResult 시 requestCode가 이상한 문제.
+
 ## 프로젝트 소개
 - 회원가입 및 로그인
 - token을 가진 회원만 글 확인 가능
