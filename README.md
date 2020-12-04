@@ -23,31 +23,31 @@
 ## 구동 이미지
 1. 회원가입
 
-![1  signup](https://user-images.githubusercontent.com/66777885/98694315-a4bf0680-23b4-11eb-8cb8-a909c5122f64.gif)
+![1  signup](https://user-images.githubusercontent.com/66777885/101208965-4d137280-36b6-11eb-9dea-ebdb785b9560.gif)
 
 서버에 id, pw를 전송후 정상 가입 완료 되면 token을 받아서 SharedPreference에 저장해줌.
 
 2. 하단 탭
 
-![2  tab](https://user-images.githubusercontent.com/66777885/98694437-c9b37980-23b4-11eb-83bd-9287be0bb5a7.gif)
+![2  tab](https://user-images.githubusercontent.com/66777885/101208990-57ce0780-36b6-11eb-83ce-f61b2cf3da2a.gif)
 
 ViewPager2와 TabLayout을 사용해서 Activity내에 Fragment를 넣음
 
 3. 사진 업로드
 
-![3  upload1](https://user-images.githubusercontent.com/66777885/98694468-d20bb480-23b4-11eb-870a-6613490bcf5c.gif)
+![3  upload1](https://user-images.githubusercontent.com/66777885/101209016-63213300-36b6-11eb-8024-c2ddb02bc2ef.gif)
 
 사진 1 업로드
 
 
-![4  upload2](https://user-images.githubusercontent.com/66777885/98694488-da63ef80-23b4-11eb-87b8-8d0e5674ace0.gif)
+![4  upload2](https://user-images.githubusercontent.com/66777885/101209030-6a484100-36b6-11eb-94dd-a7e7fef80897.gif)
 
 사진 2 업로드 & 나의 포스트 확인
 
 
 4. 로그아웃, 로그인
 
-![5  login_logout](https://user-images.githubusercontent.com/66777885/98694539-eb146580-23b4-11eb-99ad-4e9593ded5c2.gif)
+![5  login_logout](https://user-images.githubusercontent.com/66777885/101209042-70d6b880-36b6-11eb-9825-d00a165c4236.gif)
 
 로그아웃 뒤 로그인 하여도 나의 포스트 목록에는 내 아이템만 조회됨.
 
